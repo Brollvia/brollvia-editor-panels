@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Brollvia — DaVinci Resolve Workflow Integration plugin manifest.
+  Blackmagic's Workflow Integration format: one folder per plugin inside
+  Resolve's "Workflow Integration Plugins" directory, containing this
+  manifest.xml and the HTML entry it points at. The plugin UI runs in
+  Resolve's Electron-style shell.
+-->
+<Plugin>
+  <Name>Brollvia</Name>
+  <Id>com.brollvia.resolve</Id>
+  <Version>1.6.0</Version>
+  <Company>Brollvia</Company>
+  <Description>Search the Brollvia stock library (footage, photos, music and SFX) from inside DaVinci Resolve, download licensed files and file them into your Brollvia collections. Downloads record a licence on your Brollvia account, exactly like the website.</Description>
+  <Entry>index.html</Entry>
+</Plugin>

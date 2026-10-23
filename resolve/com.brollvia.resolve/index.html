@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brollvia for DaVinci Resolve</title>
+<link rel="stylesheet" href="core/brollvia-panel.css">
+</head>
+<body>
+<div id="bv-root"></div>
+<script src="brollvia-config.js"></script>
+<script src="core/brollvia-panel.js"></script>
+<script src="adapter.js"></script>
+<script>
+  // Boot the shared panel UI with the DaVinci Resolve host adapter.
+  window.BrollviaPanel.create(document.getElementById('bv-root'), {
+    host: window.BrollviaResolveHost(),
+    defaultBase: window.BROLLVIA_DEFAULT_BASE || ''
+  });
+</script>
+</body>
+</html>

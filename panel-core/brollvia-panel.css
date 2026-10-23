@@ -1,0 +1,127 @@
+/* Brollvia editor panel — shared UI styles (Premiere Pro UXP, DaVinci
+   Resolve Workflow Integration, and the plain-browser harness).
+   Everything is scoped under .bv-panel so host CSS cannot leak in or out.
+   Inter is loaded from the connected Brollvia site when reachable; the
+   stack falls back to the host's system sans otherwise. */
+
+.bv-panel {
+  --bv-bg: #ffffff;
+  --bv-surface: #f6f7f9;
+  --bv-border: #dfe3e8;
+  --bv-ink: #131722;
+  --bv-muted: #5b6472;
+  --bv-accent: #2f54eb;
+  --bv-accent-ink: #ffffff;
+  --bv-danger: #b3261e;
+  --bv-pro: #7a4b00;
+  --bv-pro-bg: #fdeec9;
+  --bv-free-bg: #e6f4ea;
+  --bv-free: #14532d;
+  --bv-radius: 10px;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--bv-ink);
+  background: var(--bv-bg);
+  box-sizing: border-box;
+  padding: 10px;
+  min-height: 100%;
+}
+.bv-panel[data-theme="dark"] {
+  --bv-bg: #1d1f24;
+  --bv-surface: #26282e;
+  --bv-border: #3a3d44;
+  --bv-ink: #f2f3f5;
+  --bv-muted: #a7adb8;
+  --bv-accent: #6b8afd;
+  --bv-danger: #ff8a80;
+  --bv-pro-bg: #4a3800;
+  --bv-pro: #ffd97a;
+  --bv-free-bg: #173d24;
+  --bv-free: #9fd8ae;
+}
+.bv-panel *, .bv-panel *::before, .bv-panel *::after { box-sizing: border-box; }
+.bv-panel button, .bv-panel input, .bv-panel select, .bv-panel textarea {
+  font: inherit; color: inherit;
+}
+.bv-panel .bv-head {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+}
+.bv-panel .bv-brand { font-weight: 700; font-size: 15px; letter-spacing: -0.01em; }
+.bv-panel .bv-brand .bv-dot { color: var(--bv-accent); }
+.bv-panel .bv-spacer { flex: 1; }
+.bv-panel .bv-plan {
+  font-size: 11px; font-weight: 600; padding: 2px 8px; border-radius: 999px;
+  background: var(--bv-surface); border: 1px solid var(--bv-border); color: var(--bv-muted);
+}
+.bv-panel .bv-iconbtn {
+  border: 1px solid var(--bv-border); background: var(--bv-surface); color: var(--bv-ink);
+  border-radius: 8px; padding: 4px 9px; cursor: pointer; font-size: 12px;
+}
+.bv-panel .bv-iconbtn:hover { border-color: var(--bv-accent); }
+.bv-panel .bv-card {
+  border: 1px solid var(--bv-border); border-radius: var(--bv-radius);
+  background: var(--bv-surface); padding: 10px; margin-bottom: 10px;
+}
+.bv-panel .bv-card h3 { margin: 0 0 6px; font-size: 13px; font-weight: 600; }
+.bv-panel .bv-card p { margin: 4px 0; color: var(--bv-muted); }
+.bv-panel label.bv-lab { display: block; font-size: 11px; font-weight: 600; color: var(--bv-muted); margin: 8px 0 3px; }
+.bv-panel input[type="text"], .bv-panel input[type="password"], .bv-panel input[type="url"], .bv-panel select {
+  width: 100%; padding: 7px 9px; border: 1px solid var(--bv-border); border-radius: 8px;
+  background: var(--bv-bg); color: var(--bv-ink); font-size: 13px;
+}
+.bv-panel .bv-btn {
+  display: inline-block; border: 1px solid var(--bv-accent); background: var(--bv-accent);
+  color: var(--bv-accent-ink); border-radius: 8px; padding: 7px 14px; cursor: pointer;
+  font-weight: 600; font-size: 13px; text-align: center;
+}
+.bv-panel .bv-btn[disabled] { opacity: 0.55; cursor: wait; }
+.bv-panel .bv-btn.bv-ghost { background: transparent; color: var(--bv-accent); }
+.bv-panel .bv-btn.bv-block { display: block; width: 100%; margin-top: 8px; }
+.bv-panel .bv-status { min-height: 18px; font-size: 12px; color: var(--bv-muted); margin: 6px 0; }
+.bv-panel .bv-status.bv-error { color: var(--bv-danger); }
+.bv-panel .bv-status.bv-ok { color: var(--bv-free); }
+.bv-panel .bv-toolbar { display: flex; gap: 6px; margin-bottom: 8px; }
+.bv-panel .bv-toolbar .bv-search { flex: 1; }
+.bv-panel .bv-filters { display: flex; gap: 6px; margin-bottom: 10px; }
+.bv-panel .bv-filters select { flex: 1; }
+.bv-panel .bv-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(118px, 1fr)); gap: 8px;
+}
+.bv-panel .bv-tile {
+  border: 1px solid var(--bv-border); border-radius: var(--bv-radius); overflow: hidden;
+  background: var(--bv-surface); cursor: pointer; text-align: left; padding: 0; width: 100%;
+}
+.bv-panel .bv-tile:hover { border-color: var(--bv-accent); }
+.bv-panel .bv-tile .bv-thumb { position: relative; aspect-ratio: 16/10; background: #0c0e12; overflow: hidden; }
+.bv-panel .bv-tile .bv-thumb img, .bv-panel .bv-tile .bv-thumb video {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+}
+.bv-panel .bv-tile .bv-meta { padding: 6px 8px; }
+.bv-panel .bv-tile .bv-title {
+  font-size: 12px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.bv-panel .bv-tile .bv-sub { font-size: 11px; color: var(--bv-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bv-panel .bv-badge {
+  position: absolute; top: 6px; left: 6px; font-size: 10px; font-weight: 700;
+  padding: 1px 6px; border-radius: 999px; letter-spacing: 0.02em;
+}
+.bv-panel .bv-badge.bv-pro { background: var(--bv-pro-bg); color: var(--bv-pro); }
+.bv-panel .bv-badge.bv-free { background: var(--bv-free-bg); color: var(--bv-free); }
+.bv-panel .bv-badge.bv-static { position: static; display: inline-block; }
+.bv-panel .bv-detail .bv-poster { width: 100%; border-radius: var(--bv-radius); display: block; background: #0c0e12; }
+.bv-panel .bv-detail h2 { font-size: 15px; margin: 10px 0 4px; }
+.bv-panel .bv-detail .bv-specs { color: var(--bv-muted); font-size: 12px; margin: 2px 0 8px; }
+.bv-panel .bv-row { display: flex; gap: 6px; align-items: end; }
+.bv-panel .bv-row > * { flex: 1; }
+.bv-panel .bv-row > .bv-narrow { flex: 0 0 auto; }
+.bv-panel details.bv-log { margin-top: 12px; border-top: 1px solid var(--bv-border); padding-top: 8px; }
+.bv-panel details.bv-log summary { cursor: pointer; font-size: 12px; font-weight: 600; color: var(--bv-muted); }
+.bv-panel .bv-loglist {
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 11px; color: var(--bv-muted); white-space: pre-wrap; word-break: break-word;
+  max-height: 180px; overflow: auto; margin: 6px 0 0; padding: 0; list-style: none;
+}
+.bv-panel .bv-hidden { display: none !important; }
+.bv-panel .bv-empty { text-align: center; color: var(--bv-muted); padding: 22px 8px; }
+.bv-panel a { color: var(--bv-accent); }
